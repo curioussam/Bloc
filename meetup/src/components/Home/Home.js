@@ -6,12 +6,12 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mesgs:'null',
+      mesgs:'012345678910',
     }
   }
 
 	IsHome=(route) => {
-	  if ((route === 'home')&&(this.state.mesgs==='null')) {
+	  if ((route === 'home')&&(this.state.mesgs === '012345678910')) {
 	  	console.log('route');
 	  	console.log(this.getData());
     } 
@@ -33,16 +33,34 @@ class Home extends React.Component {
   	this.IsHome(onRouteChange);
     console.log('mount');
   }
+  
+  createElements(n){
+    var elements = [];
+    var i=0;
+    for(i =0; i < n; i++){
+        console.log(i);
+        elements.push(
+          <MesgItem 
+         id={this.state.mesgs[i].id} 
+         issue_time={this.state.mesgs[i].issue_time} 
+         meet_time={this.state.mesgs[i].meet_time} 
+         destination={this.state.mesgs[i].destination} 
+         messages={this.state.mesgs[i].messages}
+           />
+          );
+    }
+    return elements;
+  }
 
+ 
   render() {
+
  		return (
- 			<div className="Home">
-         <MesgItem 
-         id={this.state.mesgs[0].id} 
-         issue_time={this.state.mesgs[0].issue_time} 
-         meet_time={this.state.mesgs[0].meet_time} 
-         destination={this.state.mesgs[0].destination} 
-         messages={this.state.mesgs[0].messages}/>
+      <div>
+      {this.componentDidMount()}
+           <ul>
+        {this.createElements(8)}
+      </ul>
       </div>
  			);
 	}
@@ -50,3 +68,6 @@ class Home extends React.Component {
 
 export default Home;
    // <MesgItem id={mesgs[0].id} issue_time={mesgs[0].issue_time} meet_time={mesgs[0].meet_time} destination={mesgs[0].destination} messages={mesgs[0].messages}/>
+   // <div className="Home">
+         
+   //    </div>
