@@ -1,4 +1,6 @@
 # Bloc
+Already deployed to Heroku
+https://meetupfrontend.herokuapp.com/
 
 ## Prerequisites
 1. Node.js
